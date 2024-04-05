@@ -3,9 +3,7 @@ Minimal bare-metal RISC-V assembly code with UART output for execution in QEMU
 
 ## Requirements
 ### Tools:
-- riscv64-unknown-elf-gcc
-- riscv64-unknown-elf-ld
-- riscv64-unknown-elf-objcopy
+riscv64-unknown-linux-gnu
 
 ### Building:
 Make

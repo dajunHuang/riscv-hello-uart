@@ -1,6 +1,11 @@
 .global _start
 
 _start:
+
+    li s6, 0xFFFFFFFFFFFF0001
+    li s7, 0xFFFFFFFFFFFF0002
+    li s8, 0x123456789abc0000
+    add16 s8, s6, s7
     
     # run only one instance
     csrr    t0, mhartid
@@ -26,4 +31,3 @@ forever:
 
 hello:
   .string "hello world!\n"
-  
