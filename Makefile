@@ -4,7 +4,7 @@ FLAGS   = -nostartfiles -g
 LD      = $(ARCH)-ld
 OBJCOPY = $(ARCH)-objcopy
 OBJDUMP = $(ARCH)-objdump
-QEMU	= /home/dajunhuang/plct-qemu2/build/qemu-system-riscv64
+QEMU	= /home/dajunhuang/plct-qemu/build/qemu-system-riscv64
 
 
 all: clean hello.img
