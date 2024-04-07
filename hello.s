@@ -2,9 +2,8 @@
 
 _start:
 
-    li s6, 0xFFFFFFFFFFFF0001
-    li s7, 0xFFFFFFFFFFFF0002
-    li s8, 0x123456789abc0000
+    li s6, 0x0001000100010001
+    li s7, 0x0002000200020002
     add16 s8, s6, s7
     
     # run only one instance
