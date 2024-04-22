@@ -25,5 +25,5 @@ clean:
 run: hello.img
 	$(QEMU) -cpu rv64,x-p=true -M virt -bios none -serial stdio -display none -kernel hello.img
 
-gdb:
+gdb: hello.img
 	$(QEMU) -cpu rv64,x-p=true -s -S -M virt -bios none -serial stdio -display none -kernel hello.img
