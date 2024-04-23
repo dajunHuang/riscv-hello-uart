@@ -8,11 +8,32 @@ _start:
     add16 s9, s6, s7
     bne s9, s8, print_error
 
+    # radd16
+    li s6, 0x7F120003FF780001 # rs1
+    li s7, 0x7F340007FF9a0005 # rs2
+    li s8, 0xff230005ff890003# expected result
+    radd16 s9, s6, s7
+    bne s9, s8, print_error 
+
     # uradd16
     li s6, 0x7F120003FF780001 # rs1
     li s7, 0x7F340007FF9a0005 # rs2
     li s8, 0x7f2300057f890003# expected result
     uradd16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kadd16
+    li s6, 0x7F120003FF788001 # rs1
+    li s7, 0x7F340007FF9a8005 # rs2
+    li s8, 0x7FFF000aFF128000 # expected result
+    kadd16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukadd16
+    li s6, 0x7F120003FF780001 # rs1
+    li s7, 0x7F340007FF9a0005 # rs2
+    li s8, 0xFE46000aFFFF0006 # expected result
+    ukadd16 s9, s6, s7
     bne s9, s8, print_error
 
     # sub16
@@ -41,6 +62,48 @@ _start:
     li s7, 0x7fff80000000FFFF # rs2
     li s8, 0x80007fff00000002 # expected result
     ksub16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # uksub16
+    li s6, 0x80007fff00000001 # rs1
+    li s7, 0x7fff80000000FFFF # rs2
+    li s8, 0x0001ffff0000ffff # expected result
+    uksub16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # cras16
+    li s6, 0x7F12000aFF787fff # rs1
+    li s7, 0x00077F348000FF9a # rs2
+    li s8, 0xfe460003ff12FFFF # expected result
+    cras16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # rcras16
+    li s6, 0x7F12000aFF787fff # rs1
+    li s7, 0x00077F348000FF9a # rs2
+    li s8, 0xff230001ff89FFFF # expected result
+    rcras16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # urcras16
+    li s6, 0x7F12000aFF787fff # rs1
+    li s7, 0x00077F348000FF9a # rs2
+    li s8, 0x7f2300017f897FFF # expected result
+    urcras16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kcras16
+    li s6, 0x7F12000aFF787fff # rs1
+    li s7, 0x00077F348000FF9a # rs2
+    li s8, 0x7fff0003ff127fff # expected result
+    kcras16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukcras16
+    li s6, 0x7F12000aFF787fff # rs1
+    li s7, 0x00077F348000FF9a # rs2
+    li s8, 0xfe460003ffffffff # expected result
+    ukcras16 s9, s6, s7
     bne s9, s8, print_error
     
     # run only one instance
