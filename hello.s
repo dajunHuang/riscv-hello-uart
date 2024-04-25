@@ -105,7 +105,77 @@ _start:
     li s8, 0xfe460003ffffffff # expected result
     ukcras16 s9, s6, s7
     bne s9, s8, print_error
+
+    # add8
+    li s6, 0x7F120003FF780001 # rs1
+    li s7, 0x7F340007FF9a0005 # rs2
+    li s8, 0xFE46000aFE120006 # expected result
+    add8 s9, s6, s7
+    bne s9, s8, print_error
     
+    # radd8
+    li s6, 0x7F120003FF780001 # rs1
+    li s7, 0x7F340007FF9a0005 # rs2
+    li s8, 0xff230005ff090003# expected result
+    radd8 s9, s6, s7
+    bne s9, s8, print_error 
+
+    # uradd8
+    li s6, 0x7F120003FF780001 # rs1
+    li s7, 0x7F340007FF9a0005 # rs2
+    li s8, 0x7f2300057f090003# expected result
+    uradd8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kadd8
+    li s6, 0x7F120003FF788001 # rs1
+    li s7, 0x7F340007FF9a8005 # rs2
+    li s8, 0x7F46000aFE128006 # expected result
+    kadd8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukadd8
+    li s6, 0x7F120003FF780001 # rs1
+    li s7, 0x7F340007FF9a0005 # rs2
+    li s8, 0xFE46000aFFFF0006 # expected result
+    ukadd8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # sub8
+    li s6, 0xFFFF000000000001 # rs1
+    li s7, 0x111100010000FFFF # rs2
+    li s8, 0xeeee00ff00000102 # expected result
+    sub8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # rsub8
+    li s6, 0xFFFF000000000001 # rs1
+    li s7, 0x111100010000FFFF # rs2
+    li s8, 0xF7f700FF00000001 # expected result
+    rsub8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ursub8
+    li s6, 0xFFFF000000000001 # rs1
+    li s7, 0x111100010000FFFF # rs2
+    li s8, 0x7777007f00000001 # expected result
+    ursub8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksub8
+    li s6, 0x80007fff00000001 # rs1
+    li s7, 0x7fff80000000FFFF # rs2
+    li s8, 0x80017fff00000102 # expected result
+    ksub8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # uksub8
+    li s6, 0x80007fff00000001 # rs1
+    li s7, 0x7fff80000000FFFF # rs2
+    li s8, 0x01ffffff0000ffff # expected result
+    uksub8 s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
