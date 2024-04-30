@@ -176,6 +176,112 @@ _start:
     uksub8 s9, s6, s7
     bne s9, s8, print_error
 
+    # sra16
+    li s6, 0x80007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFF3 # rs2
+    li s8, 0xf0000fff00000222 # expected result
+    sra16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # srai16
+    li s6, 0x80007fff00001111 # rs1
+    li s8, 0xf0000fff00000222 # expected result
+    srai16 s9, s6, 3
+    bne s9, s8, print_error
+
+    # sra16.u
+    li s6, 0x80007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFF3 # rs2
+    li s8, 0xf000100000000222 # expected result
+    sra16.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # srai16.u
+    li s6, 0x80007fff00001111 # rs1
+    li s8, 0xf000100000000222 # expected result
+    srai16.u s9, s6, 3
+    bne s9, s8, print_error
+
+    # srl16
+    li s6, 0x80007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFF3 # rs2
+    li s8, 0x10000fff00000222 # expected result
+    srl16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # srli16
+    li s6, 0x80007fff00001111 # rs1
+    li s8, 0x10000fff00000222 # expected result
+    srli16 s9, s6, 3
+    bne s9, s8, print_error
+
+    # srl16.u
+    li s6, 0x80007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFF3 # rs2
+    li s8, 0x1000100000000222 # expected result
+    srl16.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # srli16.u
+    li s6, 0x80007fff00001111 # rs1
+    li s8, 0x1000100000000222 # expected result
+    srli16.u s9, s6, 3
+    bne s9, s8, print_error
+
+    # sll16
+    li s6, 0xe0007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFF3 # rs2
+    li s8, 0x0000fff800008888 # expected result
+    sll16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # slli16
+    li s6, 0xe0007fff00001111 # rs1
+    li s8, 0x0000fff800008888 # expected result
+    slli16 s9, s6, 3
+    bne s9, s8, print_error
+
+    # ksll16
+    li s6, 0x80007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFF3 # rs2
+    li s8, 0x80007fff00007fff # expected result
+    ksll16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # slli16
+    li s6, 0x80007fff00001111 # rs1
+    li s8, 0x80007fff00007fff # expected result
+    kslli16 s9, s6, 3
+    bne s9, s8, print_error
+
+    # kslra16
+    li s6, 0x80007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFe3 # rs2
+    li s8, 0x80007fff00007fff # expected result
+    kslra16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslra16
+    li s6, 0x80007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFD # rs2
+    li s8, 0xf0000fff00000222 # expected result
+    kslra16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslra16_u
+    li s6, 0x80007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFe3 # rs2
+    li s8, 0x80007fff00007fff # expected result
+    kslra16.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslra16_u
+    li s6, 0x80007fff00001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFD # rs2
+    li s8, 0xf000100000000222 # expected result
+    kslra16.u s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
