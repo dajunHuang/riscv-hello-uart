@@ -282,6 +282,112 @@ _start:
     kslra16.u s9, s6, s7
     bne s9, s8, print_error
 
+    # sra8
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFB # rs2
+    li s8, 0xfff10e0806040200 # expected result
+    sra8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # srai8
+    li s6, 0xff88774433221100 # rs1
+    li s8, 0xfff10e0806040200 # expected result
+    srai8 s9, s6, 3
+    bne s9, s8, print_error
+
+    # sra8.u
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFB # rs2
+    li s8, 0x00f10f0906040200 # expected result
+    sra8.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # srai8.u
+    li s6, 0xff88774433221100 # rs1
+    li s8, 0x00f10f0906040200 # expected result
+    srai8.u s9, s6, 3
+    bne s9, s8, print_error
+
+    # srl8
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFB # rs2
+    li s8, 0x1f110e0806040200 # expected result
+    srl8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # srli8
+    li s6, 0xff88774433221100 # rs1
+    li s8, 0x1f110e0806040200 # expected result
+    srli8 s9, s6, 3
+    bne s9, s8, print_error
+
+    # srl8.u
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFB # rs2
+    li s8, 0x20110f0906040200 # expected result
+    srl8.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # srli8.u
+    li s6, 0xff88774433221100 # rs1
+    li s8, 0x20110f0906040200 # expected result
+    srli8.u s9, s6, 3
+    bne s9, s8, print_error
+
+    # sll8
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFB # rs2
+    li s8, 0xf840B82098108800 # expected result
+    sll8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # slli8
+    li s6, 0xff88774433221100 # rs1
+    li s8, 0xf840B82098108800 # expected result
+    slli8 s9, s6, 3
+    bne s9, s8, print_error
+
+    # ksll8
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFB # rs2
+    li s8, 0xf8807f7f7f7f7f00 # expected result
+    ksll8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslli8
+    li s6, 0xff88774433221100 # rs1
+    li s8, 0xf8807f7f7f7f7f00 # expected result
+    kslli8 s9, s6, 3
+    bne s9, s8, print_error
+
+    # kslra8
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFF3 # rs2
+    li s8, 0xf8807f7f7f7f7f00 # expected result
+    kslra8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslra8
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFD # rs2
+    li s8, 0xfff10e0806040200 # expected result
+    kslra8 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslra8_u
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFF3 # rs2
+    li s8, 0xf8807f7f7f7f7f00 # expected result
+    kslra8.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslra8_u
+    li s6, 0xff88774433221100 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFD # rs2
+    li s8, 0x00f10f0906040200 # expected result
+    kslra8.u s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
