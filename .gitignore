@@ -1,4 +1,3 @@
-hello.asm
-hello.o
-hello.img
-hello.elf
+hello*
+!hello32.s
+!hello64.s
