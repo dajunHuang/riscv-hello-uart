@@ -500,7 +500,49 @@ _start:
     li s10, 0x8001ffff # expected result
     khm16 s8, s6, s7
     bne s10, s8, print_error
+
+    # smul8
+    li s6, 0x1234FFFF # rs1
+    li s7, 0x12340001 # rs2
+    li s10, 0x0000FFFF # expected result
+    li s11, 0x01440a90 # expected result
+    smul8 s8, s6, s7
+    bne s10, s8, print_error
     bne s11, s9, print_error
+
+    # smulx8
+    li s6, 0x1234FFFF # rs1
+    li s7, 0x34120100 # rs2
+    li s10, 0x0000FFFF # expected result
+    li s11, 0x01440a90 # expected result
+    smulx8 s8, s6, s7
+    bne s10, s8, print_error
+    bne s11, s9, print_error
+
+    # umul8
+    li s6, 0x1234FFFF # rs1
+    li s7, 0x12340001 # rs2
+    li s10, 0x000000FF # expected result
+    li s11, 0x01440a90 # expected result
+    umul8 s8, s6, s7
+    bne s10, s8, print_error
+    bne s11, s9, print_error
+
+    # umulx8
+    li s6, 0x1234FFFF # rs1
+    li s7, 0x34120100 # rs2
+    li s10, 0x000000FF # expected result
+    li s11, 0x01440a90 # expected result
+    umulx8 s8, s6, s7
+    bne s10, s8, print_error
+    bne s11, s9, print_error
+
+    # khm8
+    li s6, 0x807F0001 # rs1
+    li s7, 0x8080FFFF # rs2
+    li s10, 0x7F8100ff # expected result
+    khm8 s8, s6, s7
+    bne s10, s8, print_error
 
     # run only one instance
     csrr    t0, mhartid

@@ -500,6 +500,41 @@ _start:
     khmx16 s8, s6, s7
     bne s10, s8, print_error
 
+    # smul8
+    li s6, 0xFFFFFFFE1234FFFF # rs1
+    li s7, 0xFFFEFFFF12340001 # rs2
+    li s8, 0x01440a900000FFFF # expected result
+    smul8 s10, s6, s7
+    bne s10, s8, print_error
+
+    # smulx8
+    li s6, 0xFFFFFFFE1234FFFF # rs1
+    li s7, 0xFFFEFFFF34120100 # rs2
+    li s8, 0x01440a900000FFFF # expected result
+    smulx8 s10, s6, s7
+    bne s10, s8, print_error
+
+    # umul8
+    li s6, 0xFFFFFFFE1234FFFF # rs1
+    li s7, 0xFFFEFFFF12340001 # rs2
+    li s8, 0x01440a90000000FF # expected result
+    umul8 s10, s6, s7
+    bne s10, s8, print_error
+
+    # umulx8
+    li s6, 0xFFFFFFFE1234FFFF # rs1
+    li s7, 0xFFFEFFFF34120100 # rs2
+    li s8, 0x01440a90000000FF # expected result
+    umulx8 s10, s6, s7
+    bne s10, s8, print_error
+
+    # khm8
+    li s6, 0x807F0001807F0001 # rs1
+    li s7, 0x8080FFFF8080FFFF # rs2
+    li s10, 0x7F8100ff7F8100ff # expected result
+    khm8 s8, s6, s7
+    bne s10, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
