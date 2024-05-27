@@ -544,6 +544,64 @@ _start:
     khm8 s8, s6, s7
     bne s10, s8, print_error
 
+    # smin16
+    li s6,  0x7FFF8000 # rs1
+    li s7,  0x80007FFF # rs2
+    li s10, 0x80008000 # expected result
+    smin16 s8, s6, s7
+    bne s10, s8, print_error
+
+    # umin16
+    li s6,  0x7FFF8000 # rs1
+    li s7,  0x80007FFF # rs2
+    li s10, 0x7FFF7FFF # expected result
+    umin16 s8, s6, s7
+    bne s10, s8, print_error
+
+    # smax16
+    li s6,  0x7FFF8000 # rs1
+    li s7,  0x80007FFF # rs2
+    li s10, 0x7FFF7FFF # expected result
+    smax16 s8, s6, s7
+    bne s10, s8, print_error
+
+    # umax16
+    li s6,  0x7FFF8000 # rs1
+    li s7,  0x80007FFF # rs2
+    li s10, 0x80008000 # expected result
+    umax16 s8, s6, s7
+    bne s10, s8, print_error
+
+    # sclip16
+    li s6, 0x000FFFF0 # rs1
+    li s8, 0x000FFFF0 # rs1
+    sclip16 s9, s6, 4         # -16 - 15
+    bne s9, s8, print_error
+
+    # uclip16
+    li s6, 0x000FFFF0 # rs1
+    li s8, 0x000F0000 # rs1
+    uclip16 s9, s6, 4         # 0 - 15
+    bne s9, s8, print_error
+
+    # kabs16
+    li s6, 0x00007FFF # rs1
+    li s8, 0x00008001 # rs1
+    kabs16 s9, s6
+    bne s9, s8, print_error
+
+    # clrs16
+    li s6, 0x000F7FFF # rs1
+    li s8, 0x000B0000 # rs1
+    clrs16 s9, s6
+    bne s9, s8, print_error
+
+    # clz16
+    li s6, 0x000F7FFF # rs1
+    li s8, 0x000C0001 # rs1
+    clz16 s9, s6
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
