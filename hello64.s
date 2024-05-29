@@ -711,6 +711,34 @@ _start:
     zunpkd832 s9, s6
     bne s9, s8, print_error  
 
+    # pkbb16
+    li s6, 0x4444333322221111 # rs1
+    li s7, 0x8888777766665555 # rs1
+    li s8, 0x3333777711115555 # rs1
+    pkbb16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # pkbt16
+    li s6, 0x4444333322221111 # rs1
+    li s7, 0x8888777766665555 # rs1
+    li s8, 0x3333888811116666 # rs1
+    pkbt16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # pktb16
+    li s6, 0x4444333322221111 # rs1
+    li s7, 0x8888777766665555 # rs1
+    li s8, 0x4444777722225555 # rs1
+    pktb16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # pktt16
+    li s6, 0x4444333322221111 # rs1
+    li s7, 0x8888777766665555 # rs1
+    li s8, 0x4444888822226666 # rs1
+    pktt16 s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
