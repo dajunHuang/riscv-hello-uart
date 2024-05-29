@@ -651,6 +651,66 @@ _start:
     clz8 s9, s6
     bne s9, s8, print_error
 
+    # sunpkd810
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0xFFF5FFF4FFF10000 # rs1
+    sunpkd810 s9, s6
+    bne s9, s8, print_error
+
+    # sunpkd820
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0x0066FFF4FFF20000 # rs1
+    sunpkd820 s9, s6
+    bne s9, s8, print_error
+
+    # sunpkd830
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0x0077FFF400330000 # rs1
+    sunpkd830 s9, s6
+    bne s9, s8, print_error
+
+    # sunpkd831
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0x0077FFF50033FFF1 # rs1
+    sunpkd831 s9, s6
+    bne s9, s8, print_error
+
+    # sunpkd832
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0x007700660033FFF2 # rs1
+    sunpkd832 s9, s6
+    bne s9, s8, print_error
+
+    # zunpkd810
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0x00F500F400F10000 # rs1
+    zunpkd810 s9, s6
+    bne s9, s8, print_error
+
+    # zunpkd820
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0x006600F400F20000 # rs1
+    zunpkd820 s9, s6
+    bne s9, s8, print_error
+
+    # zunpkd830
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0x007700F400330000 # rs1
+    zunpkd830 s9, s6
+    bne s9, s8, print_error
+
+    # zunpkd831
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0x007700F5003300F1 # rs1
+    zunpkd831 s9, s6
+    bne s9, s8, print_error
+
+    # zunpkd832
+    li s6, 0x7766F5F433F2F100 # rs1
+    li s8, 0x00770066003300F2 # rs1
+    zunpkd832 s9, s6
+    bne s9, s8, print_error  
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
