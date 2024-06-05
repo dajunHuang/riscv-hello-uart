@@ -748,6 +748,50 @@ _start:
     # pktt16 s9, s6, s7
     # bne s9, s8, print_error
 
+    # # smmul
+    # li s6, 0x00000001 # rs1
+    # li s7, 0xFFFFFFFF # rs2
+    # li s8, 0xFFFFFFFF # expected result
+    # smmul s9, s6, s7
+    # bne s9, s8, print_error
+
+    # smmul_u
+    li s6, 0x00000001 # rs1
+    li s7, 0xFFFFFFFF # rs2
+    li s8, 0x00000000 # expected result
+    smmul.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmac
+    li s6, 0x00000001 # rs1
+    li s7, 0xFFFFFFFF # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x7FFFFFFF # expected result
+    kmmac s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmac_u
+    li s6, 0x00000001 # rs1
+    li s7, 0xFFFFFFFF # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x00000001 # expected result
+    kmmac.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kwmmul
+    li s6, 0x00000001 # rs1
+    li s7, 0xFFFFFFFF # rs2
+    li s8, 0xFFFFFFFF # expected result
+    kwmmul s9, s6, s7
+    bne s9, s8, print_error
+
+    # kwmmul_u
+    li s6, 0x00000001 # rs1
+    li s7, 0xFFFFFFFF # rs2
+    li s8, 0x00000000 # expected result
+    kwmmul.u s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever

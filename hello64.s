@@ -739,6 +739,50 @@ _start:
     pktt16 s9, s6, s7
     bne s9, s8, print_error
 
+    # smmul
+    li s6, 0x000000017FFFFFFF # rs1
+    li s7, 0xFFFFFFFF7FFFFFFF # rs2
+    li s8, 0xFFFFFFFF3FFFFFFF # expected result
+    smmul s9, s6, s7
+    bne s9, s8, print_error
+
+    # smmul_u
+    li s6, 0x000000017FFFFFFF # rs1
+    li s7, 0xFFFFFFFF7FFFFFFF # rs2
+    li s8, 0x000000003FFFFFFF # expected result
+    smmul.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmac
+    li s6, 0x000000017FFFFFFF # rs1
+    li s7, 0xFFFFFFFF7FFFFFFF # rs2
+    li s9, 0x0000000100000001 # rd
+    li s8, 0x7FFFFFFF40000000 # expected result
+    kmmac s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmac_u
+    li s6, 0x000000017FFFFFFF # rs1
+    li s7, 0xFFFFFFFF7FFFFFFF # rs2
+    li s9, 0x0000000100000001 # rd
+    li s8, 0x0000000140000000 # expected result
+    kmmac.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kwmmul
+    li s6, 0x000000017FFFFFFF # rs1
+    li s7, 0xFFFFFFFF7FFFFFFF # rs2
+    li s8, 0xFFFFFFFF7FFFFFFE # expected result
+    kwmmul s9, s6, s7
+    bne s9, s8, print_error
+
+    # kwmmul_u
+    li s6, 0x000000017FFFFFFF # rs1
+    li s7, 0xFFFFFFFF7FFFFFFF # rs2
+    li s8, 0x000000007FFFFFFE # expected result
+    kwmmul.u s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
