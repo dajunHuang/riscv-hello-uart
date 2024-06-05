@@ -623,119 +623,119 @@ _start:
 
     # sclip8
     li s6, 0x000FFFF07FFF8000 # rs1
-    li s8, 0x000FFFF00FFFF000 # rs1
+    li s8, 0x000FFFF00FFFF000 # expected result
     sclip8 s9, s6, 4         # -16 - 15
     bne s9, s8, print_error
 
     # uclip8
     li s6, 0x000FFFF07FFF8000 # rs1
-    li s8, 0x000F00000F000000 # rs1
+    li s8, 0x000F00000F000000 # expected result
     uclip8 s9, s6, 4         # 0 - 15
     bne s9, s8, print_error
 
     # kabs8
     li s6, 0x00007FFFFFFF8000 # rs1
-    li s8, 0x0000810101017F00 # rs1
+    li s8, 0x0000810101017F00 # expected result
     kabs8 s9, s6
     bne s9, s8, print_error
 
     # clrs8
     li s6, 0x000F7FFFFFFF8000 # rs1
-    li s8, 0x0703000707070007 # rs1
+    li s8, 0x0703000707070007 # expected result
     clrs8 s9, s6
     bne s9, s8, print_error
 
     # clz8
     li s6, 0x000F7FFFFFFF8000 # rs1
-    li s8, 0x0804010000000008 # rs1
+    li s8, 0x0804010000000008 # expected result
     clz8 s9, s6
     bne s9, s8, print_error
 
     # sunpkd810
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0xFFF5FFF4FFF10000 # rs1
+    li s8, 0xFFF5FFF4FFF10000 # expected result
     sunpkd810 s9, s6
     bne s9, s8, print_error
 
     # sunpkd820
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0x0066FFF4FFF20000 # rs1
+    li s8, 0x0066FFF4FFF20000 # expected result
     sunpkd820 s9, s6
     bne s9, s8, print_error
 
     # sunpkd830
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0x0077FFF400330000 # rs1
+    li s8, 0x0077FFF400330000 # expected result
     sunpkd830 s9, s6
     bne s9, s8, print_error
 
     # sunpkd831
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0x0077FFF50033FFF1 # rs1
+    li s8, 0x0077FFF50033FFF1 # expected result
     sunpkd831 s9, s6
     bne s9, s8, print_error
 
     # sunpkd832
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0x007700660033FFF2 # rs1
+    li s8, 0x007700660033FFF2 # expected result
     sunpkd832 s9, s6
     bne s9, s8, print_error
 
     # zunpkd810
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0x00F500F400F10000 # rs1
+    li s8, 0x00F500F400F10000 # expected result
     zunpkd810 s9, s6
     bne s9, s8, print_error
 
     # zunpkd820
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0x006600F400F20000 # rs1
+    li s8, 0x006600F400F20000 # expected result
     zunpkd820 s9, s6
     bne s9, s8, print_error
 
     # zunpkd830
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0x007700F400330000 # rs1
+    li s8, 0x007700F400330000 # expected result
     zunpkd830 s9, s6
     bne s9, s8, print_error
 
     # zunpkd831
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0x007700F5003300F1 # rs1
+    li s8, 0x007700F5003300F1 # expected result
     zunpkd831 s9, s6
     bne s9, s8, print_error
 
     # zunpkd832
     li s6, 0x7766F5F433F2F100 # rs1
-    li s8, 0x00770066003300F2 # rs1
+    li s8, 0x00770066003300F2 # expected result
     zunpkd832 s9, s6
     bne s9, s8, print_error  
 
     # pkbb16
     li s6, 0x4444333322221111 # rs1
-    li s7, 0x8888777766665555 # rs1
-    li s8, 0x3333777711115555 # rs1
+    li s7, 0x8888777766665555 # rs2
+    li s8, 0x3333777711115555 # expected result
     pkbb16 s9, s6, s7
     bne s9, s8, print_error
 
     # pkbt16
     li s6, 0x4444333322221111 # rs1
-    li s7, 0x8888777766665555 # rs1
-    li s8, 0x3333888811116666 # rs1
+    li s7, 0x8888777766665555 # rs2
+    li s8, 0x3333888811116666 # expected result
     pkbt16 s9, s6, s7
     bne s9, s8, print_error
 
     # pktb16
     li s6, 0x4444333322221111 # rs1
-    li s7, 0x8888777766665555 # rs1
-    li s8, 0x4444777722225555 # rs1
+    li s7, 0x8888777766665555 # rs2
+    li s8, 0x4444777722225555 # expected result
     pktb16 s9, s6, s7
     bne s9, s8, print_error
 
     # pktt16
     li s6, 0x4444333322221111 # rs1
-    li s7, 0x8888777766665555 # rs1
-    li s8, 0x4444888822226666 # rs1
+    li s7, 0x8888777766665555 # rs2
+    li s8, 0x4444888822226666 # expected result
     pktt16 s9, s6, s7
     bne s9, s8, print_error
 
