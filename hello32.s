@@ -792,6 +792,126 @@ _start:
     kwmmul.u s9, s6, s7
     bne s9, s8, print_error
 
+    # smmwb
+    li s6, 0x00000001 # rs1
+    li s7, 0x0000FFFF # rs2
+    li s8, 0xFFFFFFFF # expected result
+    smmwb s9, s6, s7
+    bne s9, s8, print_error
+
+    # smmwb_u
+    li s6, 0x00000001 # rs1
+    li s7, 0x0000FFFF # rs2
+    li s8, 0x00000000 # expected result
+    smmwb.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # smmwt
+    li s6, 0x00000001 # rs1
+    li s7, 0xFFFF0000 # rs2
+    li s8, 0xFFFFFFFF # expected result
+    smmwt s9, s6, s7
+    bne s9, s8, print_error
+
+    # smmwt_u
+    li s6, 0x00000001 # rs1
+    li s7, 0xFFFF0000 # rs2
+    li s8, 0x00000000 # expected result
+    smmwt.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmawb
+    li s6, 0x00000001 # rs1
+    li s7, 0x0000FFFF # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x7FFFFFFF # expected result
+    kmmawb s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmawb_u
+    li s6, 0x00000001 # rs1
+    li s7, 0x0000FFFF # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x00000001 # expected result
+    kmmawb.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmawt
+    li s6, 0x00000001 # rs1
+    li s7, 0xFFFF0000 # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x7FFFFFFF # expected result
+    kmmawt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmawt_u
+    li s6, 0x00000001 # rs1
+    li s7, 0xFFFF0000 # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x00000001 # expected result
+    kmmawt.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmwb2
+    li s6, 0x7FFFFFFF # rs1
+    li s7, 0x00007FFF # rs2
+    li s8, 0x7ffeffff # expected result
+    kmmwb2 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmwb2_u
+    li s6, 0x7FFFFFFF # rs1
+    li s7, 0x00007FFF # rs2
+    li s8, 0x7ffeffff # expected result
+    kmmwb2.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmwt2
+    li s6, 0x7FFFFFFF # rs1
+    li s7, 0x7FFF0000 # rs2
+    li s8, 0x7ffeffff # expected result
+    kmmwt2 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmwt2_u
+    li s6, 0x7FFFFFFF # rs1
+    li s7, 0x7FFF0000 # rs2
+    li s8, 0x7ffeffff # expected result
+    kmmwt2.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmawb2
+    li s6, 0x7FFFFFFF # rs1
+    li s7, 0x00007FFF # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x7fff0000 # expected result
+    kmmawb2 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmawb2_u
+    li s6, 0x7FFFFFFF # rs1
+    li s7, 0x00007FFF # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x7fff0000 # expected result
+    kmmawb2.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmawt2
+    li s6, 0x7FFFFFFF # rs1
+    li s7, 0x7FFF0000 # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x7fff0000 # expected result
+    kmmawt2 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmmawt2_u
+    li s6, 0x7FFFFFFF # rs1
+    li s7, 0x7FFF0000 # rs2
+    li s9, 0x00000001 # rd
+    li s8, 0x7fff0000 # expected result
+    kmmawt2.u s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
