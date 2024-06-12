@@ -903,6 +903,110 @@ _start:
     kmmawt2.u s9, s6, s7
     bne s9, s8, print_error
 
+    # smbb16
+    li s6, 0xFFFF7FFFFFFF0001 # rs1
+    li s7, 0xFFFF7FFF0000FFFF # rs2
+    li s8, 0x3FFF0001FFFFFFFF # expected result
+    smbb16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # smbt16
+    li s6, 0xFFFF7FFFFFFF0001 # rs1
+    li s7, 0x7FFFFFFFFFFF0000 # rs2
+    li s8, 0x3FFF0001FFFFFFFF # expected result
+    smbt16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # smtt16
+    li s6, 0x7FFFFFFF0001FFFF # rs1
+    li s7, 0x7FFFFFFFFFFF0000 # rs2
+    li s8, 0x3FFF0001FFFFFFFF # expected result
+    smtt16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmda
+    li s6, 0x00017FFF00010001 # rs1
+    li s7, 0x00017FFF0001FFFF # rs2
+    li s8, 0x3FFF000200000000 # expected result
+    kmda s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmxda
+    li s6, 0x7FFF000100010001 # rs1
+    li s7, 0x00017FFF0001FFFF # rs2
+    li s8, 0x3FFF000200000000 # expected result
+    kmxda s9, s6, s7
+    bne s9, s8, print_error
+
+    # smds
+    li s6, 0x7FFF000100010001 # rs1
+    li s7, 0x00017FFF0001FFFF # rs2
+    li s8, 0x0000000000000002 # expected result
+    smds s9, s6, s7
+    bne s9, s8, print_error
+
+    # smdrs
+    li s6, 0x00017FFF00010001 # rs1
+    li s7, 0x7FFF0001FFFF0001 # rs2
+    li s8, 0x0000000000000002 # expected result
+    smdrs s9, s6, s7
+    bne s9, s8, print_error
+
+    # smxds
+    li s6, 0x7FFF000100010001 # rs1
+    li s7, 0x7FFF0001FFFF0001 # rs2
+    li s8, 0x0000000000000002 # expected result
+    smxds s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmabb
+    li s6, 0xFFFF7FFFFFFF7FFF # rs1
+    li s7, 0xFFFF7FFFFFFF7FFF # rs2
+    li s9, 0x7FFFFFFF7FFFFFFF # rd
+    li s8, 0x7FFFFFFF7FFFFFFF # expected result
+    kmabb s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmabb
+    li s6, 0xFFFF7FFFFFFF7FFF # rs1
+    li s7, 0xFFFF8000FFFF8000 # rs2
+    li s9, 0x8000000080000000 # rd
+    li s8, 0x8000000080000000 # expected result
+    kmabb s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmabt
+    li s6, 0xFFFF7FFFFFFF7FFF # rs1
+    li s7, 0x7FFFFFFF7FFFFFFF # rs2
+    li s9, 0x7FFFFFFF7FFFFFFF # rd
+    li s8, 0x7FFFFFFF7FFFFFFF # expected result
+    kmabt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmatt
+    li s6, 0x7FFFFFFF7FFFFFFF # rs1
+    li s7, 0x7FFFFFFF7FFFFFFF # rs2
+    li s9, 0x7FFFFFFF7FFFFFFF # rd
+    li s8, 0x7FFFFFFF7FFFFFFF # expected result
+    kmatt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmada
+    li s6, 0x7FFF7FFF7FFF7FFF # rs1
+    li s7, 0x7FFF7FFF7FFF7FFF # rs2
+    li s9, 0x7FFFFFFF7FFFFFFF # rd
+    li s8, 0x7FFFFFFF7FFFFFFF # expected result
+    kmada s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmaxda
+    li s6, 0x7FFF7FFF7FFF7FFF # rs1
+    li s7, 0x7FFF7FFF7FFF7FFF # rs2
+    li s9, 0x7FFFFFFF7FFFFFFF # rd
+    li s8, 0x7FFFFFFF7FFFFFFF # expected result
+    kmaxda s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
