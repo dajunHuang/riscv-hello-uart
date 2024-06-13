@@ -1007,6 +1007,13 @@ _start:
     kmaxda s9, s6, s7
     bne s9, s8, print_error
 
+    # smal
+    li s6, 0x0000000000000001 # rs1
+    li s7, 0x0004000300020001 # rs2
+    li s8, 0x000000000000000F # rsd
+    smal s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
