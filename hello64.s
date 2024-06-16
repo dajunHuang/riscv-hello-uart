@@ -1014,6 +1014,59 @@ _start:
     smal s9, s6, s7
     bne s9, s8, print_error
 
+    # stas16
+    li s6, 0x0008000700060000 # rs2
+    li s7, 0x0004000300020001 # rs1
+    li s8, 0x000c00040008ffff # rsd
+    stas16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # stsa16
+    li s6, 0x0007000800000006 # rs2
+    li s7, 0x0003000400010002 # rs1
+    li s8, 0x0004000cffff0008 # rsd
+    stsa16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # sclip32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s8, 0x0000000FFFFFFFF0 # rs1
+    sclip32 s9, s6, 4         # -16 - 15
+    bne s9, s8, print_error
+
+    # uclip32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s8, 0x0000000F00000000 # rs1
+    uclip32 s9, s6, 4         # 0 - 15
+    bne s9, s8, print_error
+
+    # clrs32
+    li s6, 0x000FFFFFFFFF8000 # rs1
+    li s8, 0x0000000B00000010 # expected result
+    clrs32 s9, s6
+    bne s9, s8, print_error
+
+    # clz32
+    li s6, 0x000FFFFFFFFF8000 # rs1
+    li s8, 0x0000000C00000000 # expected result
+    clz32 s9, s6
+    bne s9, s8, print_error
+
+    # pbsad
+    li s6, 0x0000000100000001 # rs1
+    li s7, 0x0001000000010000 # rs2
+    li s8, 0x0000000000000004 # expected result
+    pbsad s9, s6, s7
+    bne s9, s8, print_error
+
+    # pbsada
+    li s6, 0x0000000100000001 # rs1
+    li s7, 0x0001000000010000 # rs2
+    li s9, 1 # rd
+    li s8, 0x0000000000000005 # expected result
+    pbsada s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
