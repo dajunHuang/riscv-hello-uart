@@ -1067,6 +1067,30 @@ _start:
     pbsada s9, s6, s7
     bne s9, s8, print_error
 
+    # smaqa
+    li s6, 0x8003020104030201 # rs1
+    li s7, 0x0103020104030201 # rs2
+    li s9, 0x0000000100000001 # rd
+    li s8, 0xFFFFFF8F0000001F # expected result
+    smaqa s9, s6, s7
+    bne s9, s8, print_error
+
+    # umaqa
+    li s6, 0x8003020104030201 # rs1
+    li s7, 0x0103020104030201 # rs2
+    li s9, 0x0000000100000001 # rd
+    li s8, 0x0000008F0000001F # expected result
+    umaqa s9, s6, s7
+    bne s9, s8, print_error
+
+    # smaqa_su
+    li s6, 0x0103020104030201 # rs1
+    li s7, 0x8003020104030201 # rs2
+    li s9, 0x0000000100000001 # rd
+    li s8, 0x0000008F0000001F # expected result
+    smaqa.su s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
