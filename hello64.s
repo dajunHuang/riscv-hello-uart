@@ -1091,6 +1091,55 @@ _start:
     smaqa.su s9, s6, s7
     bne s9, s8, print_error
 
+    # radd64
+    li s6, 0x7fffffffffffffff
+    li s7, 0x0000000000000001
+    li s8, 0x4000000000000000
+    radd64 s9, s6, s7
+    bne s9, s8, print_error
+
+    # uradd64
+    li s6, 0xffffffffffffffff
+    li s7, 0x0000000000000001
+    li s8, 0x8000000000000000
+    uradd64 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kadd64
+    li s6, 0x7fffffffffffffff
+    li s7, 0x0000000000000001
+    li s8, 0x7fffffffffffffff
+    kadd64 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukadd64
+    li s6, 0xffffffffffffffff
+    li s7, 0x0000000000000001
+    li s8, 0xffffffffffffffff
+    ukadd64 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ursub64
+    li s6, 0x0000000000000000
+    li s7, 0x0000000000000001
+    li s8, 0xffffffffffffffff
+    ursub64 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksub64
+    li s6, 0x8000000000000000
+    li s7, 0x0000000000000001
+    li s8, 0x8000000000000000
+    ksub64 s9, s6, s7
+    bne s9, s8, print_error
+
+    # uksub64
+    li s6, 0x0000000000000000
+    li s7, 0x0000000000000001
+    li s8, 0x0000000000000000
+    uksub64 s9, s6, s7
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever

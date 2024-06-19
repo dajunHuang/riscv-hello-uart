@@ -1025,6 +1025,39 @@ _start:
     bne s10, s4, print_error
     bne s11, s5, print_error
 
+    # add64
+    li s6, 0x10000001
+    li s7, 0x10000001
+    li s8, 0x10000001
+    li s9, 0x10000001
+    li s3, 0x20000002
+    li s4, 0x20000002
+    add64 s10, s6, s8
+    bne s6, s8, print_error
+    bne s7, s9, print_error
+
+    # radd64
+    li s6, 0x10000001
+    li s7, 0x10000001
+    li s8, 0x10000001
+    li s9, 0x10000001
+    li s3, 0x10000001
+    li s4, 0x10000001
+    radd64 s10, s6, s8
+    bne s3, s10, print_error
+    bne s4, s11, print_error
+
+    # sub64
+    li s6, 0x00000000
+    li s7, 0x00000000
+    li s8, 0x00000001
+    li s9, 0x00000000
+    li s3, 0xffffffff
+    li s4, 0xffffffff
+    sub64 s10, s6, s8
+    bne s3, s10, print_error
+    bne s4, s11, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
