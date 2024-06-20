@@ -1058,6 +1058,72 @@ _start:
     bne s3, s10, print_error
     bne s4, s11, print_error
 
+    # smar64
+    li s6, 0x00000002
+    li s7, 0x00000002
+    li s8, 0x11111111
+    li s9, 0x11111111
+    li s10, 0x11111115
+    li s11, 0x11111111
+    smar64 s8, s6, s7;
+    bne s8, s10, print_error
+    bne s9, s11, print_error
+
+    # smsr64
+    li s6, 0x00000002
+    li s7, 0x00000002
+    li s8, 0x11111111
+    li s9, 0x11111111
+    li s10, 0x1111110d
+    li s11, 0x11111111
+    smsr64 s8, s6, s7;
+    bne s8, s10, print_error
+    bne s9, s11, print_error
+
+    # kmar64
+    li s6, 0x00000005
+    li s7, 0x00000001
+    li s8, 0xFFFFFFFF
+    li s9, 0x7FFFFFFF
+    li s10, 0xFFFFFFFF
+    li s11, 0x7FFFFFFF
+    kmar64 s8, s6, s7;
+    bne s8, s10, print_error
+    bne s9, s11, print_error
+
+    # kmsr64
+    li s6, 0x00000005
+    li s7, 0x00000001
+    li s8, 0x00000000
+    li s9, 0x80000000
+    li s10, 0x00000000
+    li s11, 0x80000000
+    kmsr64 s8, s6, s7;
+    bne s8, s10, print_error
+    bne s9, s11, print_error
+
+    # ukmar64
+    li s6, 0x00000005
+    li s7, 0x00000001
+    li s8, 0xFFFFFFFF
+    li s9, 0xFFFFFFFF
+    li s10, 0xFFFFFFFF
+    li s11, 0xFFFFFFFF
+    ukmar64 s8, s6, s7;
+    bne s8, s10, print_error
+    bne s9, s11, print_error
+
+    # ukmsr64
+    li s6, 0x00000005
+    li s7, 0x00000001
+    li s8, 0x00000000
+    li s9, 0x00000000
+    li s10, 0xFFFFFFFF
+    li s11, 0xFFFFFFFF
+    ukmsr64 s8, s6, s7;
+    bne s8, s10, print_error
+    bne s9, s11, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever

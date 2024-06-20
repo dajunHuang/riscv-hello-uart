@@ -1140,6 +1140,54 @@ _start:
     uksub64 s9, s6, s7
     bne s9, s8, print_error
 
+    # smar64
+    li s6, 0x0000000200000001
+    li s7, 0x0000000200000001
+    li s9, 0x1111111111111111
+    li s8, 0x1111111111111116
+    smar64 s9, s6, s7;
+    bne s9, s8, print_error
+
+    # smsr64
+    li s6, 0x0000000200000001
+    li s7, 0x0000000200000001
+    li s9, 0x1111111111111111
+    li s8, 0x111111111111110c
+    smsr64 s9, s6, s7;
+    bne s9, s8, print_error
+
+    # kmar64
+    li s6, 0x0000000200000001
+    li s7, 0x0000000200000001
+    li s9, 0x7FFFFFFFFFFFFFFF
+    li s8, 0x7FFFFFFFFFFFFFFF
+    kmar64 s9, s6, s7;
+    bne s9, s8, print_error
+
+    # kmsr64
+    li s6, 0x0000000200000001
+    li s7, 0x0000000200000001
+    li s9, 0x8000000000000000
+    li s8, 0x8000000000000000
+    kmsr64 s9, s6, s7;
+    bne s9, s8, print_error
+
+    # ukmar64
+    li s6, 0x0000000200000001
+    li s7, 0x0000000200000001
+    li s9, 0xFFFFFFFFFFFFFFFF
+    li s8, 0xFFFFFFFFFFFFFFFF
+    ukmar64 s9, s6, s7;
+    bne s9, s8, print_error
+
+    # ukmsr64
+    li s6, 0x0000000200000001
+    li s7, 0x0000000200000001
+    li s9, 0x0000000000000000
+    li s8, 0xFFFFFFFFFFFFFFFF
+    ukmsr64 s9, s6, s7;
+    bne s9, s8, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
