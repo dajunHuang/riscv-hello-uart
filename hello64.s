@@ -1188,6 +1188,31 @@ _start:
     ukmsr64 s9, s6, s7;
     bne s9, s8, print_error
 
+    # smalbb
+    li s6, 0x0004000100020002
+    li s7, 0x0001000300010004
+    li s9, 0xF000000000000000
+    li s8, 0xF00000000000000B
+    smalbb s9, s6, s7;
+    bne s9, s8, print_error
+
+    # smalbt
+    li s6, 0x0004000100020002
+    li s7, 0x0001000300010004
+    li s9, 0xF000000000000000
+    li s8, 0xF000000000000003
+    smalbt s9, s6, s7;
+    bne s9, s8, print_error
+
+    # smaltt
+    li s6, 0x0004000100020002
+    li s7, 0x0001000300010004
+    li s9, 0xF000000000000000
+    li s8, 0xF000000000000006
+    smaltt s9, s6, s7;
+    bne s9, s8, print_error
+
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever

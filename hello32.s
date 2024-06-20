@@ -1124,6 +1124,39 @@ _start:
     bne s8, s10, print_error
     bne s9, s11, print_error
 
+    # smalbb
+    li s6, 0x00020002
+    li s7, 0x00010004
+    li s8, 0x00000000
+    li s9, 0xF0000000
+    li s3, 0x00000008
+    li s4, 0xF0000000
+    smalbb s8, s6, s7;
+    bne s3, s8, print_error
+    bne s4, s9, print_error
+
+    # smalbt
+    li s6, 0x00020002
+    li s7, 0x00010004
+    li s8, 0x00000000
+    li s9, 0xF0000000
+    li s3, 0x00000002
+    li s4, 0xF0000000
+    smalbt s8, s6, s7;
+    bne s3, s8, print_error
+    bne s4, s9, print_error
+
+    # smaltt
+    li s6, 0x00020002
+    li s7, 0x00020004
+    li s8, 0x00000000
+    li s9, 0xF0000000
+    li s3, 0x00000004
+    li s4, 0xF0000000
+    smaltt s8, s6, s7;
+    bne s3, s8, print_error
+    bne s4, s9, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
