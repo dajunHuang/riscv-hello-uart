@@ -577,7 +577,7 @@ _start:
 
     # kabs16
     li s6, 0x00007FFFFFFF8000 # rs1
-    li s8, 0x0000800100017FFF # rs1
+    li s8, 0x00007FFF00017FFF # rs1
     kabs16 s9, s6
     bne s9, s8, print_error
 
@@ -635,7 +635,7 @@ _start:
 
     # kabs8
     li s6, 0x00007FFFFFFF8000 # rs1
-    li s8, 0x0000810101017F00 # expected result
+    li s8, 0x00007F0101017F00 # expected result
     kabs8 s9, s6
     bne s9, s8, print_error
 
@@ -1212,6 +1212,61 @@ _start:
     smaltt s9, s6, s7;
     bne s9, s8, print_error
 
+    # kaddh
+    li s6, 0xFFFFFFFFFFFF8000
+    li s7, 0xFFFFFFFFFFFF8000
+    li s8, 0xFFFFFFFFFFFF8000
+    kaddh s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksubh
+    li s6, 0xFFFFFFFFFFFF8000
+    li s7, 0x0000000000007fff
+    li s8, 0xFFFFFFFFFFFF8000
+    ksubh s9, s6, s7
+    bne s9, s8, print_error
+
+    # khmbb
+    li s6, 0x0000000000007FFF
+    li s7, 0x0000000000007FFF
+    li s8, 0x0000000000007FFE
+    khmbb s9, s6, s7
+    bne s9, s8, print_error
+
+    # khmbb
+    li s6, 0x0000000000008000
+    li s7, 0x0000000000008000
+    li s8, 0x0000000000007FFF
+    khmbb s9, s6, s7
+    bne s9, s8, print_error
+
+    # khmbt
+    li s6, 0x0000000000007FFF
+    li s7, 0x000000007FFF0000
+    li s8, 0x0000000000007FFE
+    khmbt s9, s6, s7
+    bne s9, s8, print_error
+
+    # khmtt
+    li s6, 0x000000007FFF0000
+    li s7, 0x000000007FFF0000
+    li s8, 0x0000000000007FFE
+    khmtt s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukaddh
+    li s6, 0xFFFFFFFFFFFFFFFF
+    li s7, 0xFFFFFFFFFFFFFFFF
+    li s8, 0xFFFFFFFFFFFFFFFF
+    ukaddh s9, s6, s7
+    bne s9, s8, print_error
+
+    # uksubh
+    li s6, 0xFFFFFFFFFFFF0000
+    li s7, 0x0000000000000001
+    li s8, 0xFFFFFFFFFFFFFFFF
+    uksubh s9, s6, s7
+    bne s9, s8, print_error
 
     # run only one instance
     csrr    t0, mhartid
