@@ -1213,6 +1213,328 @@ _start:
     uksubh s9, s6, s7
     bne s9, s8, print_error
 
+    # kaddw
+    li s6, 0x80000000
+    li s7, 0x80000000
+    li s8, 0x80000000
+    kaddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kaddw
+    li s6, 0x7FFFFFFF
+    li s7, 0x7FFFFFFF
+    li s8, 0x7FFFFFFF
+    kaddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukaddw
+    li s6, 0x00000000FFFFFFF
+    li s7, 0xFFFFFFFF
+    li s8, 0xFFFFFFFF
+    ukaddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksbuw
+    li s6, 0x80000000
+    li s7, 0x7FFFFFFF
+    li s8, 0x80000000
+    ksubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # uksbuw
+    li s6, 0x00000000
+    li s7, 0x00000001
+    li s8, 0xFFFFFFFF
+    uksubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbb
+    li s6, 0x00008000
+    li s7, 0x00008000
+    li s8, 0x7FFFFFFF
+    kdmbb s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbt
+    li s6, 0x00007FFF
+    li s7, 0x7FFF0000
+    li s8, 0x7FFE0002
+    kdmbt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbt
+    li s6, 0x00008000
+    li s7, 0x7FFF0000
+    li s8, 0x80010000
+    kdmbt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmtt
+    li s6, 0x7FFF0000
+    li s7, 0x7FFF0000
+    li s8, 0x7FFE0002
+    kdmtt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslraw
+    li s6, 0x8FFF0000
+    li s7, 0x0000001F # 31
+    li s8, 0x80000000
+    kslraw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslraw
+    li s6, 0x8FFF0000
+    li s7, 0x00000020 # -32 (-31)
+    li s8, 0xFFFFFFFF
+    kslraw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksllw
+    li s6, 0x0000000F
+    li s7, 0x0000000F # 15
+    li s8, 0x00078000
+    ksllw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslliw
+    li s6, 0x0000000F
+    li s8, 0x00078000
+    kslliw s9, s6, 15
+    bne s9, s8, print_error
+
+    # kdmabb
+    li s6, 0x00007FFF
+    li s7, 0x00007FFF
+    li s9, 0x00000001
+    li s8, 0x7FFE0003
+    kdmabb s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmabt
+    li s6, 0x00007FFF
+    li s7, 0x7FFF0000
+    li s9, 0x00000001
+    li s8, 0x7FFE0003
+    kdmabt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmatt
+    li s6, 0x7FFF0000
+    li s7, 0x7FFF0000
+    li s9, 0x00000001
+    li s8, 0x7FFE0003
+    kdmatt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kabsw
+    li s6, 0xFFFFFFFF
+    li s8, 0x00000001
+    kabsw s9, s6
+    bne s9, s8, print_error
+
+    # kaddw
+    li s6, 0x80000000
+    li s7, 0x80000000
+    li s8, 0x80000000
+    kaddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kaddw
+    li s6, 0x7FFFFFFF
+    li s7, 0x7FFFFFFF
+    li s8, 0x7FFFFFFF
+    kaddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukaddw
+    li s6, 0x00000000FFFFFFF
+    li s7, 0xFFFFFFFF
+    li s8, 0xFFFFFFFF
+    ukaddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksbuw
+    li s6, 0x80000000
+    li s7, 0x7FFFFFFF
+    li s8, 0x80000000
+    ksubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # uksbuw
+    li s6, 0x00000000
+    li s7, 0x00000001
+    li s8, 0xFFFFFFFF
+    uksubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbb
+    li s6, 0x00008000
+    li s7, 0x00008000
+    li s8, 0x7FFFFFFF
+    kdmbb s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbt
+    li s6, 0x00007FFF
+    li s7, 0x7FFF0000
+    li s8, 0x7FFE0002
+    kdmbt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbt
+    li s6, 0x00008000
+    li s7, 0x7FFF0000
+    li s8, 0x80010000
+    kdmbt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmtt
+    li s6, 0x7FFF0000
+    li s7, 0x7FFF0000
+    li s8, 0x7FFE0002
+    kdmtt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslraw
+    li s6, 0x8FFF0000
+    li s7, 0x000000000000001F # 31
+    li s8, 0x80000000
+    kslraw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslraw
+    li s6, 0x8FFF0000
+    li s7, 0x0000000000000020 # -32 (-31)
+    li s8, 0xFFFFFFFF
+    kslraw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksllw
+    li s6, 0x0000000F
+    li s7, 0x000000000000000F # 15
+    li s8, 0x00078000
+    ksllw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslliw
+    li s6, 0x0000000F
+    li s8, 0x00078000
+    kslliw s9, s6, 15
+    bne s9, s8, print_error
+
+    # kdmabb
+    li s6, 0x00007FFF
+    li s7, 0x00007FFF
+    li s9, 0x00000001
+    li s8, 0x7FFE0003
+    kdmabb s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmabt
+    li s6, 0x00007FFF
+    li s7, 0x7FFF0000
+    li s9, 0x00000001
+    li s8, 0x7FFE0003
+    kdmabt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmatt
+    li s6, 0x7FFF0000
+    li s7, 0x7FFF0000
+    li s9, 0x00000001
+    li s8, 0x7FFE0003
+    kdmatt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kabsw
+    li s6, 0xFFFFFFFF
+    li s8, 0x00000001
+    kabsw s9, s6
+    bne s9, s8, print_error
+
+    # raddw
+    li s6, 0x40000000
+    li s7, 0x80000000
+    li s8, 0xe0000000
+    raddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # uraddw
+    li s6, 0x40000000
+    li s7, 0x80000000
+    li s8, 0x60000000
+    uraddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # rsubw
+    li s6, 0x80000000
+    li s7, 0x40000000
+    li s8, 0xa0000000
+    rsubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ursubw
+    li s6, 0x80000000
+    li s7, 0x40000000
+    li s8, 0x20000000
+    ursubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # mulr64
+    li s6, 0x7fffffff
+    li s7, 0x80000000
+    li s8, 0x80000000
+    li s9, 0x3FFFFFFF
+    mulr64 s10, s6, s7
+    bne s10, s8, print_error
+    bne s11, s9, print_error
+
+    # mulsr64
+    li s6, 0x7fffffff
+    li s7, 0x80000000
+    li s8, 0x80000000
+    li s9, 0xC0000000
+    mulsr64 s10, s6, s7
+    bne s10, s8, print_error
+    bne s11, s9, print_error
+
+    # ave
+    li s6, 0x7FFFFFFF
+    li s7, 0x7FFFFFFF
+    li s8, 0x7FFFFFFF
+    ave s9, s6, s7
+    bne s9, s8, print_error
+
+    # bitrev
+    li s6, 0x12345678
+    li s7, 0x000000FF
+    li s8, 0x1E6A2C48
+    bitrev s9, s6, s7
+    bne s9, s8, print_error
+
+    # bitrevi
+    li s6, 0x12345678
+    li s8, 0x1E6A2C48
+    bitrevi s9, s6, 31
+    bne s9, s8, print_error
+
+    # wext
+    li s6, 0x12345678
+    li s7, 0x9abcdef1
+    li s9, 0x000000FF
+    li s8, 0x3579BDE2
+    wext s10, s6, s9
+    bne s10, s8, print_error
+
+    # cmix
+    li s6, 0x11111111
+    li s8, 0xf0f0f0f0
+    li s7, 0x22222222
+    li s10, 0x12121212
+    cmix s9, s8, s6, s7
+    bne s9, s10, print_error
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever

@@ -1268,6 +1268,251 @@ _start:
     uksubh s9, s6, s7
     bne s9, s8, print_error
 
+    # kaddw
+    li s6, 0x0000000080000000
+    li s7, 0x0000000080000000
+    li s8, 0xFFFFFFFF80000000
+    kaddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kaddw
+    li s6, 0x000000007FFFFFFF
+    li s7, 0x000000007FFFFFFF
+    li s8, 0x000000007FFFFFFF
+    kaddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukaddw
+    li s6, 0x00000000FFFFFFF
+    li s7, 0x00000000FFFFFFFF
+    li s8, 0xFFFFFFFFFFFFFFFF
+    ukaddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksbuw
+    li s6, 0x0000000080000000
+    li s7, 0x000000007FFFFFFF
+    li s8, 0xFFFFFFFF80000000
+    ksubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # uksbuw
+    li s6, 0x0000000000000000
+    li s7, 0x0000000000000001
+    li s8, 0xFFFFFFFFFFFFFFFF
+    uksubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbb
+    li s6, 0x0000000000008000
+    li s7, 0x0000000000008000
+    li s8, 0x000000007FFFFFFF
+    kdmbb s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbt
+    li s6, 0x0000000000007FFF
+    li s7, 0x000000007FFF0000
+    li s8, 0x000000007FFE0002
+    kdmbt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbt
+    li s6, 0x0000000000008000
+    li s7, 0x000000007FFF0000
+    li s8, 0xFFFFFFFF80010000
+    kdmbt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmtt
+    li s6, 0x000000007FFF0000
+    li s7, 0x000000007FFF0000
+    li s8, 0x000000007FFE0002
+    kdmtt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslraw
+    li s6, 0x000000008FFF0000
+    li s7, 0x000000000000001F # 31
+    li s8, 0xffffffff80000000
+    kslraw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslraw
+    li s6, 0x000000008FFF0000
+    li s7, 0x0000000000000020 # -32 (-31)
+    li s8, 0xFFFFFFFFFFFFFFFF
+    kslraw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksllw
+    li s6, 0x000000000000000F
+    li s7, 0x000000000000000F # 15
+    li s8, 0x0000000000078000
+    ksllw s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslliw
+    li s6, 0x000000000000000F
+    li s8, 0x0000000000078000
+    kslliw s9, s6, 15
+    bne s9, s8, print_error
+
+    # kdmabb
+    li s6, 0x0000000000007FFF
+    li s7, 0x0000000000007FFF
+    li s9, 0x0000000000000001
+    li s8, 0x000000007FFE0003
+    kdmabb s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmabt
+    li s6, 0x0000000000007FFF
+    li s7, 0x000000007FFF0000
+    li s9, 0x0000000000000001
+    li s8, 0x000000007FFE0003
+    kdmabt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmatt
+    li s6, 0x000000007FFF0000
+    li s7, 0x000000007FFF0000
+    li s9, 0x0000000000000001
+    li s8, 0x000000007FFE0003
+    kdmatt s9, s6, s7
+    bne s9, s8, print_error
+
+    # kabsw
+    li s6, 0x00000000FFFFFFFF
+    li s8, 0x0000000000000001
+    kabsw s9, s6
+    bne s9, s8, print_error
+
+    # raddw
+    li s6, 0x0000000040000000
+    li s7, 0x0000000080000000
+    li s8, 0xffffffffe0000000
+    raddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # uraddw
+    li s6, 0x0000000040000000
+    li s7, 0x0000000080000000
+    li s8, 0x0000000060000000
+    uraddw s9, s6, s7
+    bne s9, s8, print_error
+
+    # rsubw
+    li s6, 0x0000000080000000
+    li s7, 0x0000000040000000
+    li s8, 0xffffffffa0000000
+    rsubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # ursubw
+    li s6, 0x0000000080000000
+    li s7, 0x0000000040000000
+    li s8, 0x0000000020000000
+    ursubw s9, s6, s7
+    bne s9, s8, print_error
+
+    # mulr64
+    li s6, 0x000000007fffffff
+    li s7, 0x0000000080000000
+    li s8, 0x3FFFFFFF80000000
+    mulr64 s10, s6, s7
+    bne s10, s8, print_error
+
+    # mulsr64
+    li s6, 0x000000007fffffff
+    li s7, 0x0000000080000000
+    li s8, 0xC000000080000000
+    mulsr64 s10, s6, s7
+    bne s10, s8, print_error
+
+    # hello64.s:1433: Error: unrecognized opcode `maxw s10,s6,s7'
+    # hello64.s:1434: Error: unrecognized opcode `mminw s10,s6,s7'
+    # maxw s10, s6, s7
+    # mminw s10, s6, s7
+
+    # ave
+    li s6, 0x7FFFFFFFFFFFFFFF
+    li s7, 0x7FFFFFFFFFFFFFFF
+    li s8, 0x7FFFFFFFFFFFFFFF
+    ave s9, s6, s7
+    bne s9, s8, print_error
+
+    # sra_u
+    li s6, 0x7FFFFFFFFFFFFFFF
+    li s7, 0x00000000000000E3
+    li s8, 0x1000000000000000
+    sra.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # sra_u
+    li s6, 0x8000000000000000
+    li s7, 0x00000000000000E3
+    li s8, 0xF000000000000000
+    sra.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # bitrev
+    li s6, 0x1234567812345678
+    li s7, 0x00000000000000FF
+    li s8, 0x1E6A2C481E6A2C48
+    bitrev s9, s6, s7
+    bne s9, s8, print_error
+
+    # bitrevi
+    li s6, 0x1234567812345678
+    li s8, 0x1E6A2C481E6A2C48
+    bitrevi s9, s6, 63
+    bne s9, s8, print_error
+
+    # wext
+    li s6, 0x9abcdef112345678
+    li s7, 0x00000000000000FF
+    li s8, 0x000000003579BDE2
+    wext s9, s6, s7
+    bne s9, s8, print_error
+
+    # wexti
+    li s6, 0x9abcdef112345678
+    li s8, 0x000000003579BDE2
+    wexti s9, s6, 31
+    bne s9, s8, print_error
+
+    # cmix
+    li s6, 0x1111111111111111
+    li s8, 0xf0f0f0f0f0f0f0f0
+    li s7, 0x2222222222222222
+    li s10, 0x1212121212121212
+    cmix s9, s8, s6, s7
+    bne s9, s10, print_error
+
+    # insb
+    li s7, 0x2222222222222222
+    li s8, 0x2211111111111111
+    li s9, 0x1111111111111111
+    insb s9, s7, 7
+    bne s9, s8, print_error
+
+    # maddr32
+    li s6, 0xFFFFFFFF80000001
+    li s7, 0xFFFFFFFF00000001
+    li s9, 0xFFFFFFFF00000001
+    li s8, 0xFFFFFFFF80000002
+    maddr32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # max
+    li s6, 0x8000000000000000
+    li s7, 0x8000000000000001
+    li s9, 0x8000000000000001
+    max s8, s6, s7
+    bne s9, s8, print_error
+
+
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
