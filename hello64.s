@@ -11,14 +11,14 @@ _start:
     # radd16
     li s6, 0x7F120003FF780001 # rs1
     li s7, 0x7F340007FF9a0005 # rs2
-    li s8, 0xff230005ff890003# expected result
+    li s8, 0x7F230005ff890003# expected result
     radd16 s9, s6, s7
     bne s9, s8, print_error 
 
     # uradd16
     li s6, 0x7F120003FF780001 # rs1
     li s7, 0x7F340007FF9a0005 # rs2
-    li s8, 0x7f2300057f890003# expected result
+    li s8, 0x7f230005Ff890003# expected result
     uradd16 s9, s6, s7
     bne s9, s8, print_error
 
@@ -53,7 +53,7 @@ _start:
     # ursub16
     li s6, 0xFFFF000000000001 # rs1
     li s7, 0x111100010000FFFF # rs2
-    li s8, 0x77777FFF00000001 # expected result
+    li s8, 0x7777FFFF00008001 # expected result
     ursub16 s9, s6, s7
     bne s9, s8, print_error
 
@@ -81,14 +81,14 @@ _start:
     # rcras16
     li s6, 0x7F12000aFF787fff # rs1
     li s7, 0x00077F348000FF9a # rs2
-    li s8, 0xff230001ff89FFFF # expected result
+    li s8, 0x7f230001ff897FFF # expected result
     rcras16 s9, s6, s7
     bne s9, s8, print_error
 
     # urcras16
     li s6, 0x7F12000aFF787fff # rs1
     li s7, 0x00077F348000FF9a # rs2
-    li s8, 0x7f2300017f897FFF # expected result
+    li s8, 0x7f230001ff89FFFF # expected result
     urcras16 s9, s6, s7
     bne s9, s8, print_error
 
@@ -116,14 +116,14 @@ _start:
     # radd8
     li s6, 0x7F120003FF780001 # rs1
     li s7, 0x7F340007FF9a0005 # rs2
-    li s8, 0xff230005ff090003# expected result
+    li s8, 0x7F230005ff090003 # expected result
     radd8 s9, s6, s7
     bne s9, s8, print_error 
 
     # uradd8
     li s6, 0x7F120003FF780001 # rs1
     li s7, 0x7F340007FF9a0005 # rs2
-    li s8, 0x7f2300057f090003# expected result
+    li s8, 0x7f230005FF890003 # expected result
     uradd8 s9, s6, s7
     bne s9, s8, print_error
 
@@ -158,7 +158,7 @@ _start:
     # ursub8
     li s6, 0xFFFF000000000001 # rs1
     li s7, 0x111100010000FFFF # rs2
-    li s8, 0x7777007f00000001 # expected result
+    li s8, 0x777700FF00008081 # expected result
     ursub8 s9, s6, s7
     bne s9, s8, print_error
 
@@ -1512,6 +1512,77 @@ _start:
     max s8, s6, s7
     bne s9, s8, print_error
 
+    # add32
+    li s6, 0xFFFFFF12FFFFFF78 # rs1
+    li s7, 0xFFFFFF34FFFFFF9a # rs2
+    li s8, 0xFFFFFe46FFFFff12 # expected result
+    add32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # radd32
+    li s6, 0xFFFFFF12FFFFFF78 # rs1
+    li s7, 0xFFFFFF34FFFFFF9a # rs2
+    li s8, 0xFFFFff23FFFFff89 # expected result
+    radd32 s9, s6, s7
+    bne s9, s8, print_error 
+
+    # uradd32
+    li s6, 0xFFFFFF12FFFFFF78 # rs1
+    li s7, 0xFFFFFF34FFFFFF9a # rs2
+    li s8, 0xFFFFFf23FFFFFF89 # expected result
+    uradd32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kadd32
+    li s6, 0x800000007FFFFFFF # rs1
+    li s7, 0x800000007FFFFFFF # rs2
+    li s8, 0x800000007FFFFFFF # expected result
+    kadd32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukadd32
+    li s6, 0xFFFFFFFF7FFFFFFF # rs1
+    li s7, 0xFFFFFFFF7FFFFFFF # rs2
+    li s8, 0xFFFFFFFFFFFFFFFE # expected result
+    ukadd32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # sub32
+    li s6, 0x0000000000000001 # rs1
+    li s7, 0x00000001FFFFFFFF # rs2
+    li s8, 0xffffffff00000002 # expected result
+    sub32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # rsub32
+    li s6, 0x0000000000000001 # rs1
+    li s7, 0x00000001FFFFFFFF # rs2
+    li s8, 0xFFFFFFFF00000001 # expected result
+    rsub32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ursub32
+    li s6, 0x0000000000000001 # rs1
+    li s7, 0x00000001FFFFFFFF # rs2
+    li s8, 0xFFFFFFFF80000001 # expected result
+    ursub32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ksub32
+    li s6, 0x7fffffff00000001 # rs1
+    li s7, 0x80000000FFFFFFFF # rs2
+    li s8, 0x7fffffff00000002 # expected result
+    ksub32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # uksub32
+    li s6, 0x7fffffff00000001 # rs1
+    li s7, 0x80000000FFFFFFFF # rs2
+    li s8, 0xFFFFFFFFFFFFFFFF # expected result
+    uksub32 s9, s6, s7
+    bne s9, s8, print_error
+
+    
 
     # run only one instance
     csrr    t0, mhartid

@@ -2,163 +2,163 @@
 
 _start:
     # add16
-    li s6, 0xFF780001 # rs1
-    li s7, 0xFF9a0005 # rs2
-    li s8, 0xff120006 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0xfe46000a # expected result
     add16 s9, s6, s7
     bne s9, s8, print_error
 
     # radd16
-    li s6, 0xFF780001 # rs1
-    li s7, 0xFF9a0005 # rs2
-    li s8, 0xff890003 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0x7F230005 # expected result
     radd16 s9, s6, s7
     bne s9, s8, print_error 
 
     # uradd16
-    li s6, 0xFF780001 # rs1
-    li s7, 0xFF9a0005 # rs2
-    li s8, 0x7f890003 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0x7f230005 # expected result
     uradd16 s9, s6, s7
     bne s9, s8, print_error
 
     # kadd16
-    li s6, 0xFF788001 # rs1
-    li s7, 0xFF9a8005 # rs2
-    li s8, 0xFF128000 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0x7FFF000a # expected result
     kadd16 s9, s6, s7
     bne s9, s8, print_error
 
     # ukadd16
-    li s6, 0xFF780001 # rs1
-    li s7, 0xFF9a0005 # rs2
-    li s8, 0xFFFF0006 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0xFE46000a # expected result
     ukadd16 s9, s6, s7
     bne s9, s8, print_error
 
     # sub16
-    li s6, 0x00000001 # rs1
-    li s7, 0x0000FFFF # rs2
-    li s8, 0x00000002 # expected result
+    li s6, 0xFFFF0000 # rs1
+    li s7, 0x11110001 # rs2
+    li s8, 0xeeeeffff # expected result
     sub16 s9, s6, s7
     bne s9, s8, print_error
 
     # rsub16
-    li s6, 0x00000001 # rs1
-    li s7, 0x0000FFFF # rs2
-    li s8, 0x00000001 # expected result
+    li s6, 0xFFFF0000 # rs1
+    li s7, 0x11110001 # rs2
+    li s8, 0xF777FFFF # expected result
     rsub16 s9, s6, s7
     bne s9, s8, print_error
 
     # ursub16
-    li s6, 0x00000001 # rs1
-    li s7, 0x0000FFFF # rs2
-    li s8, 0x00000001 # expected result
+    li s6, 0xFFFF0000 # rs1
+    li s7, 0x11110001 # rs2
+    li s8, 0x7777FFFF # expected result
     ursub16 s9, s6, s7
     bne s9, s8, print_error
 
     # ksub16
-    li s6, 0x00000001 # rs1
-    li s7, 0x0000FFFF # rs2
-    li s8, 0x00000002 # expected result
+    li s6, 0x80007fff # rs1
+    li s7, 0x7fff8000 # rs2
+    li s8, 0x80007fff # expected result
     ksub16 s9, s6, s7
     bne s9, s8, print_error
 
     # uksub16
-    li s6, 0x00000001 # rs1
-    li s7, 0x0000FFFF # rs2
-    li s8, 0x0000ffff # expected result
+    li s6, 0x80007fff # rs1
+    li s7, 0x7fff8000 # rs2
+    li s8, 0x0001ffff # expected result
     uksub16 s9, s6, s7
     bne s9, s8, print_error
 
     # cras16
-    li s6, 0xFF787fff # rs1
-    li s7, 0x8000FF9a # rs2
-    li s8, 0xff12FFFF # expected result
+    li s6, 0x7F12000a # rs1
+    li s7, 0x00077F34 # rs2
+    li s8, 0xfe460003 # expected result
     cras16 s9, s6, s7
     bne s9, s8, print_error
 
     # rcras16
-    li s6, 0xFF787fff # rs1
-    li s7, 0x8000FF9a # rs2
-    li s8, 0xff89FFFF # expected result
+    li s6, 0x7F12000a # rs1
+    li s7, 0x00077F34 # rs2
+    li s8, 0x7f230001 # expected result
     rcras16 s9, s6, s7
     bne s9, s8, print_error
 
     # urcras16
-    li s6, 0xFF787fff # rs1
-    li s7, 0x8000FF9a # rs2
-    li s8, 0x7f897FFF # expected result
+    li s6, 0x7F12000a # rs1
+    li s7, 0x00077F34 # rs2
+    li s8, 0x7f230001 # expected result
     urcras16 s9, s6, s7
     bne s9, s8, print_error
 
     # kcras16
-    li s6, 0xFF787fff # rs1
-    li s7, 0x8000FF9a # rs2
-    li s8, 0xff127fff # expected result
+    li s6, 0x7F12000a # rs1
+    li s7, 0x00077F34 # rs2
+    li s8, 0x7fff0003 # expected result
     kcras16 s9, s6, s7
     bne s9, s8, print_error
 
     # ukcras16
-    li s6, 0xFF787fff # rs1
-    li s7, 0x8000FF9a # rs2
-    li s8, 0xffffffff # expected result
+    li s6, 0x7F12000a # rs1
+    li s7, 0x00077F34 # rs2
+    li s8, 0xfe460003 # expected result
     ukcras16 s9, s6, s7
     bne s9, s8, print_error
 
     # add8
-    li s6, 0xFF780001 # rs1
-    li s7, 0xFF9a0005 # rs2
-    li s8, 0xFE120006 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0xFE46000a # expected result
     add8 s9, s6, s7
     bne s9, s8, print_error
     
     # radd8
-    li s6, 0xFF780001 # rs1
-    li s7, 0xFF9a0005 # rs2
-    li s8, 0xff090003 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0x7F230005 # expected result
     radd8 s9, s6, s7
     bne s9, s8, print_error 
 
     # uradd8
-    li s6, 0xFF780001 # rs1
-    li s7, 0xFF9a0005 # rs2
-    li s8, 0x7f090003 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0x7f230005 # expected result
     uradd8 s9, s6, s7
     bne s9, s8, print_error
 
     # kadd8
-    li s6, 0xFF788001 # rs1
-    li s7, 0xFF9a8005 # rs2
-    li s8, 0xFE128006 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0x7F46000a # expected result
     kadd8 s9, s6, s7
     bne s9, s8, print_error
 
     # ukadd8
-    li s6, 0xFF780001 # rs1
-    li s7, 0xFF9a0005 # rs2
-    li s8, 0xFFFF0006 # expected result
+    li s6, 0x7F120003 # rs1
+    li s7, 0x7F340007 # rs2
+    li s8, 0xFE46000a # expected result
     ukadd8 s9, s6, s7
     bne s9, s8, print_error
 
     # sub8
-    li s6, 0x00000001 # rs1
-    li s7, 0x0000FFFF # rs2
-    li s8, 0x00000102 # expected result
+    li s6, 0xFFFF0000 # rs1
+    li s7, 0x11110001 # rs2
+    li s8, 0xeeee00ff # expected result
     sub8 s9, s6, s7
     bne s9, s8, print_error
 
     # rsub8
-    li s6, 0x00000001 # rs1
-    li s7, 0x0000FFFF # rs2
-    li s8, 0x00000001 # expected result
+    li s6, 0xFFFF0000 # rs1
+    li s7, 0x11110001 # rs2
+    li s8, 0xF7f700FF # expected result
     rsub8 s9, s6, s7
     bne s9, s8, print_error
 
     # ursub8
-    li s6, 0x00000001 # rs1
-    li s7, 0x0000FFFF # rs2
-    li s8, 0x00000001 # expected result
+    li s6, 0xFFFF0000 # rs1
+    li s7, 0x11110001 # rs2
+    li s8, 0x777700FF # expected result
     ursub8 s9, s6, s7
     bne s9, s8, print_error
 
@@ -1398,21 +1398,21 @@ _start:
 
     # kslraw
     li s6, 0x8FFF0000
-    li s7, 0x000000000000001F # 31
+    li s7, 0x0000001F # 31
     li s8, 0x80000000
     kslraw s9, s6, s7
     bne s9, s8, print_error
 
     # kslraw
     li s6, 0x8FFF0000
-    li s7, 0x0000000000000020 # -32 (-31)
+    li s7, 0x00000020 # -32 (-31)
     li s8, 0xFFFFFFFF
     kslraw s9, s6, s7
     bne s9, s8, print_error
 
     # ksllw
     li s6, 0x0000000F
-    li s7, 0x000000000000000F # 15
+    li s7, 0x0000000F # 15
     li s8, 0x00078000
     ksllw s9, s6, s7
     bne s9, s8, print_error
