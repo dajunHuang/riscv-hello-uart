@@ -1716,6 +1716,99 @@ _start:
     ukstsa32 s9, s6, s7
     bne s9, s8, print_error
 
+    # sra32
+    li s6, 0x8000000000001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFE3 # rs2
+    li s8, 0xF000000000000222 # expected result
+    sra32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # srai32
+    li s6, 0x8000000000001111 # rs1
+    li s8, 0xF000000000000222 # expected result
+    srai32 s9, s6, 3
+    bne s9, s8, print_error
+
+    # sra32.u
+    li s6, 0x8000000080000004 # rs1
+    li s7, 0xFFFFFFFFFFFFFFE3 # rs2
+    li s8, 0xF0000000F0000001 # expected result
+    sra32.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # srai32.u
+    li s6, 0x8000000080000004 # rs1
+    li s8, 0xF0000000F0000001 # expected result
+    srai32.u s9, s6, 3
+    bne s9, s8, print_error
+
+    # srl32
+    li s6, 0x8000000000001111 # rs1
+    li s7, 0xFFFFFFFFFFFFFFE3 # rs2
+    li s8, 0x1000000000000222 # expected result
+    srl32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # srli32
+    li s6, 0x8000000000001111 # rs1
+    li s8, 0x1000000000000222 # expected result
+    srli32 s9, s6, 3
+    bne s9, s8, print_error
+
+    # srl32.u
+    li s6, 0x8000000080000004 # rs1
+    li s7, 0xFFFFFFFFFFFFFFE3 # rs2
+    li s8, 0x1000000010000001 # expected result
+    srl32.u s9, s6, s7
+    bne s9, s8, print_error
+
+    # sll32
+    li s6, 0xE000000000000001 # rs1
+    li s7, 0xFFFFFFFFFFFFFFE3 # rs2
+    li s8, 0x0000000000000008 # expected result
+    sll32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # slli32
+    li s6, 0xE000000000000001 # rs1
+    li s8, 0x0000000000000008 # expected result
+    slli32 s9, s6, 3
+    bne s9, s8, print_error
+
+    # ksll32
+    li s6, 0xE000000000000001 # rs1
+    li s7, 0xFFFFFFFFFFFFFFE3 # rs2
+    li s8, 0x8000000000000008 # expected result
+    ksll32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslli32
+    li s6, 0xE000000000000001 # rs1
+    li s8, 0x8000000000000008 # expected result
+    kslli32 s9, s6, 3
+    bne s9, s8, print_error
+
+    # kslra32
+    li s6, 0xE000000080000000 # rs1
+    li s7, 0xFFFFFFFFFFFFFFC3 # rs2 3
+    li s8, 0x8000000080000000 # expected result
+    kslra32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslra32
+    li s6, 0xE000000080000000 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFD # rs2  -3
+    li s8, 0xFC000000F0000000 # expected result
+    kslra32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kslra32_u
+    li s6, 0xE000000480000004 # rs1
+    li s7, 0xFFFFFFFFFFFFFFFD # rs2  -3
+    li s8, 0xFC000001F0000001 # expected result
+    kslra32.u s9, s6, s7
+    bne s9, s8, print_error
+
     # pkbt32
     li s6, 0x7fffffff00000001 # rs1
     li s7, 0x80000000FFFFFFFF # rs2
