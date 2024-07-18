@@ -1582,7 +1582,154 @@ _start:
     uksub32 s9, s6, s7
     bne s9, s8, print_error
 
-    
+    # cras32
+    li s6, 0xffffffff00000000 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x00000000FFFFFFFF # expected result
+    cras32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # rcras32
+    li s6, 0xffffffff80000001 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x00000000c0000000 # expected result
+    rcras32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # urcras32
+    li s6, 0xffffffff80000001 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x8000000040000000 # expected result
+    urcras32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kcras32
+    li s6, 0x7fffffff80000000 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x7fffffff80000000 # expected result
+    kcras32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukcras32
+    li s6, 0xffffffff00000000 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0xffffffffffffffff # expected result
+    ukcras32 s9, s6, s7
+    bne s9, s8, print_error
+
+
+    # crsa32
+    li s6, 0x00000000ffffffff # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0xFFFFFFFF00000000 # expected result
+    crsa32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # rcrsa32
+    li s6, 0x80000001ffffffff # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0xc000000000000000 # expected result
+    rcrsa32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # urcrsa32
+    li s6, 0x80000001ffffffff # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x4000000080000000 # expected result
+    urcrsa32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kcrsa32
+    li s6, 0x800000007fffffff # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x800000007fffffff # expected result
+    kcrsa32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukcrsa32
+    li s6, 0x00000000ffffffff # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0xffffffffffffffff # expected result
+    ukcrsa32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # stas32
+    li s6, 0xffffffff00000000 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x00000000FFFFFFFF # expected result
+    stas32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # rstas32
+    li s6, 0xffffffff80000001 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x00000000c0000000 # expected result
+    rstas32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # urstas32
+    li s6, 0xffffffff80000001 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x8000000040000000 # expected result
+    urstas32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kstas32
+    li s6, 0x7fffffff80000000 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x7fffffff80000000 # expected result
+    kstas32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukstas32
+    li s6, 0xffffffff00000000 # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0xffffffffffffffff # expected result
+    ukstas32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # stsa32
+    li s6, 0x00000000ffffffff # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0xFFFFFFFF00000000 # expected result
+    stsa32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # urstsa32
+    li s6, 0x80000001ffffffff # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x4000000080000000 # expected result
+    urstsa32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kstsa32
+    li s6, 0x800000007fffffff # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0x800000007fffffff # expected result
+    kstsa32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # ukstsa32
+    li s6, 0x00000000ffffffff # rs1
+    li s7, 0x0000000100000001 # rs2
+    li s8, 0xffffffffffffffff # expected result
+    ukstsa32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # pkbt32
+    li s6, 0x7fffffff00000001 # rs1
+    li s7, 0x80000000FFFFFFFF # rs2
+    li s8, 0x0000000180000000 # expected result
+    pkbt32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmsda32
+    li s6, 0x0000000200000001 # rs1
+    li s7, 0x0000000300000004 # rs2
+    li s9, 0x000000000000000F
+    li s8, 0x0000000000000005 # expected result
+    kmsda32 s9, s6, s7
+    bne s9, s8, print_error
 
     # run only one instance
     csrr    t0, mhartid
