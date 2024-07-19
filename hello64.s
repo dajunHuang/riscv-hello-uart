@@ -1809,6 +1809,226 @@ _start:
     kslra32.u s9, s6, s7
     bne s9, s8, print_error
 
+    # smin32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s7, 0xFFFFFFFF80000001 # rs2
+    li s8, 0xFFFFFFFF80000000 # expected result
+    smin32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # umin32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s7, 0xFFFFFFFF80000001 # rs2
+    li s8, 0x7FFFFFFF80000000 # expected result
+    umin32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # smax32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s7, 0xFFFFFFFF80000001 # rs2
+    li s8, 0x7FFFFFFF80000001 # expected result
+    smax32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kabs32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s8, 0x7FFFFFFF7FFFFFFF # expected result
+    kabs32 s9, s6
+    bne s9, s8, print_error
+
+    # khmbb16
+    li s6, 0x7FFC7FFD7FFE7FFF # rs1
+    li s7, 0x7FF87FF97FFA7FFB # rs2
+    li s8, 0x00007FF600007FFA # expected result
+    khmbb16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # khmbt16
+    li s6, 0x7FFC7FFD7FFE7FFF # rs1
+    li s7, 0x7FF87FF97FFA7FFB # rs2
+    li s8, 0x00007FF500007FF9 # expected result
+    khmbt16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # khmtt16
+    li s6, 0x7FFC7FFD7FFE7FFF # rs1
+    li s7, 0x7FF87FF97FFA7FFB # rs2
+    li s8, 0x00007FF400007FF8 # expected result
+    khmtt16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbb16
+    li s6, 0x7FFC7FFD7FFE7FFF # rs1
+    li s7, 0x7FF87FF97FFA7FFB # rs2
+    li s8, 0x7FF6002A7FFA000A # expected result
+    kdmbb16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmbt16
+    li s6, 0x7FFC7FFD7FFE7FFF # rs1
+    li s7, 0x7FF87FF97FFA7FFB # rs2
+    li s8, 0x7FF500307FF9000C # expected result
+    kdmbt16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmtt16
+    li s6, 0x7FFC7FFD7FFE7FFF # rs1
+    li s7, 0x7FF87FF97FFA7FFB # rs2
+    li s8, 0x7FF400407FF80018 # expected result
+    kdmtt16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmabb16
+    li s6, 0x7FFC7FFD7FFE7FFF # rs1
+    li s7, 0x7FF87FF97FFA7FFB # rs2
+    li s9, 0x7FFFFFFF00000000 # rd
+    li s8, 0x7FFFFFFF7FFA000A # expected result
+    kdmabb16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmabt16
+    li s6, 0x7FFC7FFD7FFE7FFF # rs1
+    li s7, 0x7FF87FF97FFA7FFB # rs2
+    li s9, 0x7FFFFFFF00000000 # rd
+    li s8, 0x7FFFFFFF7FF9000C # expected result
+    kdmabt16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kdmatt16
+    li s6, 0x7FFC7FFD7FFE7FFF # rs1
+    li s7, 0x7FF87FF97FFA7FFB # rs2
+    li s9, 0x7FFFFFFF00000000 # rd
+    li s8, 0x7FFFFFFF7FF80018 # expected result
+    kdmatt16 s9, s6, s7
+    bne s9, s8, print_error
+
+    # smbt32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s7, 0xFFFFFFFF80000001 # rs2
+    li s8, 0x0000000080000000 # expected result
+    smbt32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # smtt32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s7, 0xFFFFFFFF80000001 # rs2
+    li s8, 0xFFFFFFFF80000001 # expected result
+    smtt32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmabb32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s7, 0xFFFFFFFF80000001 # rs2
+    li s9, 0x7FFFFFFFFFFFFFFF # rd
+    li s8, 0x7FFFFFFFFFFFFFFF # expected result
+    kmabb32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmabt32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s7, 0xFFFFFFFF80000001 # rs2
+    li s9, 0x7FFFFFFFFFFFFFFF # rd
+    li s8, 0x7FFFFFFFFFFFFFFF # expected result
+    kmabt32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmatt32
+    li s6, 0x7FFFFFFF80000000 # rs1
+    li s7, 0xFFFFFFFF80000001 # rs2
+    li s9, 0x7FFFFFFFFFFFFFFF # rd
+    li s8, 0x7FFFFFFF80000000 # expected result
+    kmatt32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmda32
+    li s6, 0x7FFFFFFE7FFFFFFF # rs1
+    li s7, 0x7FFFFFFC7FFFFFFD # rs2
+    li s8, 0x7FFFFFFB0000000B # expected result
+    kmda32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmxda32
+    li s6, 0x7FFFFFFE7FFFFFFF # rs1
+    li s7, 0x7FFFFFFD7FFFFFFC # rs2
+    li s8, 0x7FFFFFFB0000000B # expected result
+    kmxda32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmaxda32
+    li s6, 0x7FFFFFFE7FFFFFFF # rs1
+    li s7, 0x7FFFFFFD7FFFFFFC # rs2
+    li s9, 0x7FFFFFFFFFFFFFFF # rd
+    li s8, 0x7FFFFFFFFFFFFFFF # expected result
+    kmaxda32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmads32
+    li s6, 0x7FFFFFFE7FFFFFFF # rs1
+    li s7, 0x7FFFFFFD7FFFFFFC # rs2
+    li s9, 0x7FFFFFFFFFFFFFFF # rd
+    li s8, 0x7FFFFFFFFFFFFFFF # expected result
+    kmads32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmadrs32
+    li s6, 0x7FFFFFFF7FFFFFFE # rs1
+    li s7, 0x7FFFFFFC7FFFFFFD # rs2
+    li s9, 0x7FFFFFFFFFFFFFFF # rd
+    li s8, 0x7FFFFFFFFFFFFFFF # expected result
+    kmadrs32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmaxds32
+    li s6, 0x7FFFFFFF7FFFFFFE # rs1
+    li s7, 0x7FFFFFFC7FFFFFFD # rs2
+    li s9, 0x0000000000000000 # rd
+    li s8, 0x00000000FFFFFFFB # expected result
+    kmaxds32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmsda32
+    li s6, 0x7FFFFFFF7FFFFFFE # rs1
+    li s7, 0x7FFFFFFC7FFFFFFD # rs2
+    li s9, 0x7FFFFFFFFFFFFFFF # rd
+    li s8, 0x00000004FFFFFFF5 # expected result
+    kmsda32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # kmsxda32
+    li s6, 0x7FFFFFFF7FFFFFFE # rs1
+    li s7, 0x7FFFFFFD7FFFFFFC # rs2
+    li s9, 0x7FFFFFFFFFFFFFFF # rd
+    li s8, 0x00000004FFFFFFF5 # expected result
+    kmsxda32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # smds32
+    li s6, 0x7FFFFFFE7FFFFFFF # rs1
+    li s7, 0x7FFFFFFD7FFFFFFC # rs2
+    li s8, 0x0000000000000002 # expected result
+    smds32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # smdrs32
+    li s6, 0x7FFFFFFE7FFFFFFF # rs1
+    li s7, 0x7FFFFFFD7FFFFFFC # rs2
+    li s8, 0xFFFFFFFFFFFFFFFE # expected result
+    smdrs32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # smxds32
+    li s6, 0x7FFFFFFE7FFFFFFF # rs1
+    li s7, 0x7FFFFFFC7FFFFFFD # rs2
+    li s8, 0x0000000000000002 # expected result
+    smxds32 s9, s6, s7
+    bne s9, s8, print_error
+
+    # sraiw_u
+    li s6, 0xE000000080000004 # rs1
+    li s8, 0xFFFFFFFFF0000001 # expected result
+    sraiw.u s9, s6, 3
+    bne s9, s8, print_error
+
     # pkbt32
     li s6, 0x7fffffff00000001 # rs1
     li s7, 0x80000000FFFFFFFF # rs2
@@ -1816,12 +2036,11 @@ _start:
     pkbt32 s9, s6, s7
     bne s9, s8, print_error
 
-    # kmsda32
-    li s6, 0x0000000200000001 # rs1
-    li s7, 0x0000000300000004 # rs2
-    li s9, 0x000000000000000F
-    li s8, 0x0000000000000005 # expected result
-    kmsda32 s9, s6, s7
+    # pktb32
+    li s6, 0x7fffffff00000001 # rs1
+    li s7, 0x80000000FFFFFFFF # rs2
+    li s8, 0x7fffffffFFFFFFFF # expected result
+    pktb32 s9, s6, s7
     bne s9, s8, print_error
 
     # run only one instance
