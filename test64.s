@@ -1430,8 +1430,8 @@ _start:
     mulsr64 s10, s6, s7
     bne s10, s8, print_error
 
-    # hello64.s:1433: Error: unrecognized opcode `maxw s10,s6,s7'
-    # hello64.s:1434: Error: unrecognized opcode `mminw s10,s6,s7'
+    # test64.s:1433: Error: unrecognized opcode `maxw s10,s6,s7'
+    # teset64.s:1434: Error: unrecognized opcode `mminw s10,s6,s7'
     # maxw s10, s6, s7
     # mminw s10, s6, s7
 
@@ -2046,11 +2046,11 @@ _start:
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
-print_hello:
+print_pass:
     # prepare for the loop
     li      s1, 0x10000000  # UART output register   
-    la      s2, hello       # load string start addr into s2
-    addi    s3, s2, 13      # set up string end addr in s3
+    la      s2, pass       # load string start addr into s2
+    addi    s3, s2, 8      # set up string end addr in s3
     jal     loop
 print_error:
     li      s1, 0x10000000  # UART output register
@@ -2068,7 +2068,7 @@ forever:
 
 .section .data
 
-hello:
-  .string "hello world!\n"
+pass:
+  .string "passed!\n"
 error:
   .string "error!\n"

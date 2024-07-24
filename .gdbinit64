@@ -4,7 +4,7 @@ end
 
 alias ir = info reg s6 s7 s9 s8
 
-file hello64.elf
+file test64.elf
 target remote localhost:1234
 b _start
 c

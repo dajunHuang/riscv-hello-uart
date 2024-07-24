@@ -1538,11 +1538,11 @@ _start:
     # run only one instance
     csrr    t0, mhartid
     bnez    t0, forever
-print_hello:
+print_pass:
     # prepare for the loop
     li      s1, 0x10000000  # UART output register   
-    la      s2, hello       # load string start addr into s2
-    addi    s3, s2, 13      # set up string end addr in s3
+    la      s2, pass       # load string start addr into s2
+    addi    s3, s2, 8      # set up string end addr in s3
     jal     loop
 print_error:
     li      s1, 0x10000000  # UART output register
@@ -1560,7 +1560,7 @@ forever:
 
 .section .data
 
-hello:
-  .string "hello world!\n"
+pass:
+  .string "passed!\n"
 error:
   .string "error!\n"

@@ -1,4 +1,4 @@
-# QEMU Test for RISC-V P Extension (RISC-V Hello Uart)
+# QEMU Test for RISC-V P Extension
 
 ## 1\. GCC Toolchain
 
@@ -63,10 +63,10 @@ Run testcases:
 
 ```bash
 $ make run64
-hello world!
+passed!
 ```
 
-`hello world!` means all testcases passed. Otherwise `error!`.
+`passed!` means all testcases passed. Otherwise `error!`.
 
 ------
 
@@ -85,9 +85,9 @@ GDB window:
 
 ```
 0x0000000000001000 in ?? ()
-Breakpoint 1 at 0x80000000: file hello.s, line 5.
+Breakpoint 1 at 0x80000000: file test64.s, line 5.
 
-Breakpoint 1, _start () at hello.s:5
+Breakpoint 1, _start () at test64.s:5
 5           li s6, 0x0001000100010001
 (gdb) n
 6           li s7, 0x0002000200020002
