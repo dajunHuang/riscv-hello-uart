@@ -2,7 +2,7 @@ FLAGS   = -nostartfiles -g
 QEMU64	= /home/dajunhuang/plct-qemu/build/qemu-system-riscv64
 QEMU32	= /home/dajunhuang/plct-qemu/build/qemu-system-riscv32
 
-all: clean hello64.img hello32.img
+all: hello64.img hello32.img
 
 # 64 bit testcase
 
