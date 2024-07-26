@@ -38,7 +38,7 @@ $ export PATH=$PATH:/path/to/toolchain/bin
 
 ```bash
 $ cd ~
-$ git clone git@y.riscv.ac.cn:whale/plct-qemu.git -b plct-rvp
+$ git clone https://github.com/plctlab/plct-qemu.git -b plct-rvp
 $ cd plct-qemu
 $ ./configure --target-list=riscv64-softmmu,riscv32-softmmu,riscv64-linux-user,riscv32-linux-user
 $ make -j16
