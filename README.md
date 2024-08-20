@@ -18,7 +18,7 @@ $ cd riscv-gnu-toolchain
 # 64bit:
 $ ./configure --prefix=/path/to/64bit/toolchain --with-arch=rv64gp --with-abi=lp64d --with-gcc-src=/home/*username*/riscv-gcc --with-binutils-src=/home/*username*/riscv-binutils-gdb
 # or 32bit:
-$ ./configure --prefix=/path/to/32bit/toolchain --with-arch=rv32gp --with-abi=ilp32 --with-gcc-src=/home/*username*/riscv-gcc --with-binutils-src=/home/*username*/riscv-binutils-gdb
+$ ./configure --prefix=/path/to/32bit/toolchain --with-arch=rv32gp --with-abi=ilp32d --with-gcc-src=/home/*username*/riscv-gcc --with-binutils-src=/home/*username*/riscv-binutils-gdb
 ```
 
 `--prefix` set the install path for toolchain, `--with-gcc` and `--with-binutils-src` set the path of gcc and gdb cloned before.
@@ -38,7 +38,7 @@ $ export PATH=$PATH:/path/to/toolchain/bin
 
 ```bash
 $ cd ~
-$ git clone https://github.com/plctlab/plct-qemu.git -b plct-rvp
+$ git clone git@y.riscv.ac.cn:whale/plct-qemu.git -b plct-rvp
 $ cd plct-qemu
 $ ./configure --target-list=riscv64-softmmu,riscv32-softmmu,riscv64-linux-user,riscv32-linux-user
 $ make -j16
